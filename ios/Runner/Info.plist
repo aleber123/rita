@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>Sömnkoll</string>
+	<string>Rita</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -13,7 +13,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>Sömnkoll</string>
+	<string>Rita</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
@@ -41,109 +41,20 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>GADApplicationIdentifier</key>
-	<string>ca-app-pub-4013461464810205~8344810321</string>
-	<key>SKAdNetworkItems</key>
-	<array>
-		<dict>
-			<key>SKAdNetworkIdentifier</key>
-			<string>cstr6suwn9.skadnetwork</string>
-		</dict>
-		<dict>
-			<key>SKAdNetworkIdentifier</key>
-			<string>v9wttpbfk9.skadnetwork</string>
-		</dict>
-		<dict>
-			<key>SKAdNetworkIdentifier</key>
-			<string>n38lu8286q.skadnetwork</string>
-		</dict>
-		<dict>
-			<key>SKAdNetworkIdentifier</key>
-			<string>9t245vhmpl.skadnetwork</string>
-		</dict>
-		<dict>
-			<key>SKAdNetworkIdentifier</key>
-			<string>4fzdc2evr5.skadnetwork</string>
-		</dict>
-		<dict>
-			<key>SKAdNetworkIdentifier</key>
-			<string>2fnua5tdw4.skadnetwork</string>
-		</dict>
-		<dict>
-			<key>SKAdNetworkIdentifier</key>
-			<string>ydx93a7ass.skadnetwork</string>
-		</dict>
-		<dict>
-			<key>SKAdNetworkIdentifier</key>
-			<string>5a6flpkh64.skadnetwork</string>
-		</dict>
-		<dict>
-			<key>SKAdNetworkIdentifier</key>
-			<string>p78axxw29g.skadnetwork</string>
-		</dict>
-		<dict>
-			<key>SKAdNetworkIdentifier</key>
-			<string>v79kvwwj4g.skadnetwork</string>
-		</dict>
-		<dict>
-			<key>SKAdNetworkIdentifier</key>
-			<string>c6k4g5qg8m.skadnetwork</string>
-		</dict>
-		<dict>
-			<key>SKAdNetworkIdentifier</key>
-			<string>s39g8k73mm.skadnetwork</string>
-		</dict>
-		<dict>
-			<key>SKAdNetworkIdentifier</key>
-			<string>3qy4746246.skadnetwork</string>
-		</dict>
-		<dict>
-			<key>SKAdNetworkIdentifier</key>
-			<string>3sh42y64q3.skadnetwork</string>
-		</dict>
-		<dict>
-			<key>SKAdNetworkIdentifier</key>
-			<string>f38h382jlk.skadnetwork</string>
-		</dict>
-		<dict>
-			<key>SKAdNetworkIdentifier</key>
-			<string>rvh3l7un93.skadnetwork</string>
-		</dict>
-		<dict>
-			<key>SKAdNetworkIdentifier</key>
-			<string>prcb7njmu6.skadnetwork</string>
-		</dict>
-		<dict>
-			<key>SKAdNetworkIdentifier</key>
-			<string>mlmmfzh3r3.skadnetwork</string>
-		</dict>
-		<dict>
-			<key>SKAdNetworkIdentifier</key>
-			<string>t38b2kh725.skadnetwork</string>
-		</dict>
-		<dict>
-			<key>SKAdNetworkIdentifier</key>
-			<string>7ug5zh24hu.skadnetwork</string>
-		</dict>
-	</array>
 	<key>NSUserTrackingUsageDescription</key>
-	<string>Vi använder din data för att visa relevanta annonser och förbättra din upplevelse av appen.</string>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>Sömnkoll lyssnar på ljud under natten för att upptäcka snarkningar, sömntal och rörelser så vi kan analysera din sömn.</string>
-	<key>NSHealthShareUsageDescription</key>
-	<string>Sömnkoll behöver tillgång för att läsa dina sömndata från Hälsa-appen.</string>
-	<key>NSHealthUpdateUsageDescription</key>
-	<string>Sömnkoll skriver dina sömnsessioner till Hälsa-appen så att du ser dem tillsammans med din övriga hälsodata.</string>
-	<key>UIBackgroundModes</key>
-	<array>
-		<string>audio</string>
-	</array>
+	<string>Vi använder din data för att visa Rita för fler familjer som vill färglägga tillsammans.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Rita använder kameran för att förvandla foton till färgläggningsbilder direkt på enheten — ingen bild lämnar telefonen.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Rita läser ett foto du väljer för att förvandla det till en färgläggningsbild direkt på enheten — ingen bild lämnar telefonen.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Rita kan spara dina färdiga teckningar i bildgalleriet.</string>
 	<key>FacebookAppID</key>
-	<string>1389482349882579</string>
+	<string>35011157115199449</string>
 	<key>FacebookClientToken</key>
-	<string>22821920d7fd5469a5cbf95de0ac834d</string>
+	<string>8d811fe52155fc76dea87f039e1197e3</string>
 	<key>FacebookDisplayName</key>
-	<string>Sömnkoll</string>
+	<string>Rita</string>
 	<key>FacebookAutoLogAppEventsEnabled</key>
 	<false/>
 	<key>FacebookAdvertiserIDCollectionEnabled</key>

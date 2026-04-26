@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1024" y2="1024" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFC857"/>
+      <stop offset="1" stop-color="#FF8FA3"/>
+    </linearGradient>
+    <linearGradient id="crayonBody" x1="0" y1="0" x2="0" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="0.5" stop-color="#FFE9F0"/>
+      <stop offset="1" stop-color="#FFD1DD"/>
+    </linearGradient>
+  </defs>
+
+  <!-- background, full bleed; iOS rounds corners automatically -->
+  <rect x="0" y="0" width="1024" height="1024" fill="url(#bg)"/>
+
+  <!-- rainbow arc behind the crayon, drawn as overlapping strokes -->
+  <g fill="none" stroke-linecap="round">
+    <path d="M 180 760 Q 512 380 844 760" stroke="#E63946" stroke-width="44" transform="translate(0,-110)"/>
+    <path d="M 180 760 Q 512 380 844 760" stroke="#F4A261" stroke-width="44" transform="translate(0,-66)"/>
+    <path d="M 180 760 Q 512 380 844 760" stroke="#FFD166" stroke-width="44" transform="translate(0,-22)"/>
+    <path d="M 180 760 Q 512 380 844 760" stroke="#8AC926" stroke-width="44" transform="translate(0,22)"/>
+    <path d="M 180 760 Q 512 380 844 760" stroke="#48CAE4" stroke-width="44" transform="translate(0,66)"/>
+    <path d="M 180 760 Q 512 380 844 760" stroke="#9D4EDD" stroke-width="44" transform="translate(0,110)"/>
+  </g>
+
+  <!-- colored pencil, angled, drawing the arc.
+       Composed left→right: flat back end, long colored body, wooden cone, dark graphite tip. -->
+  <g transform="translate(540 480) rotate(35)">
+    <!-- shadow -->
+    <g transform="translate(10 16)" opacity="0.22">
+      <rect x="-300" y="-70" width="500" height="140" rx="14" fill="#000"/>
+      <path d="M 200 -70 L 320 -22 L 320 22 L 200 70 Z" fill="#000"/>
+      <path d="M 320 -22 L 380 -10 L 380 10 L 320 22 Z" fill="#000"/>
+    </g>
+
+    <!-- flat back end cap -->
+    <rect x="-300" y="-70" width="36" height="140" rx="6" fill="#FFB3C8"/>
+    <rect x="-298" y="-70" width="6" height="140" fill="rgba(0,0,0,0.18)"/>
+
+    <!-- main body, clear pink with a paler highlight stripe -->
+    <rect x="-264" y="-70" width="464" height="140" fill="#FF6B9D"/>
+    <rect x="-264" y="-70" width="464" height="20" fill="rgba(255,255,255,0.35)"/>
+    <rect x="-264" y="50" width="464" height="20" fill="rgba(0,0,0,0.18)"/>
+
+    <!-- ferrule rings near the tip end so it reads as a pencil -->
+    <rect x="160" y="-70" width="10" height="140" fill="rgba(0,0,0,0.25)"/>
+    <rect x="184" y="-70" width="10" height="140" fill="rgba(255,255,255,0.5)"/>
+
+    <!-- wooden sharpened cone -->
+    <path d="M 200 -70 L 320 -22 L 320 22 L 200 70 Z" fill="#F4D9A8"/>
+    <path d="M 200 -70 L 320 -22 L 320 -10 L 200 -50 Z" fill="rgba(255,255,255,0.45)"/>
+    <path d="M 200 50 L 320 10 L 320 22 L 200 70 Z" fill="rgba(0,0,0,0.18)"/>
+
+    <!-- dark graphite tip -->
+    <path d="M 320 -22 L 380 -10 L 380 10 L 320 22 Z" fill="#2B2D42"/>
+  </g>
+
+</svg>

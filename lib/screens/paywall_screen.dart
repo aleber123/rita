@@ -1,203 +1,294 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:url_launcher/url_launcher.dart';
-import '../services/ad_service.dart';
-import '../services/premium_service.dart';
-import '../utils/constants.dart';
 
-class PaywallScreen extends StatelessWidget {
-  final String source;
-  const PaywallScreen({super.key, this.source = 'generic'});
+import '../data/modules_catalog.dart';
+import '../services/module_service.dart';
+import '../utils/app_theme.dart';
+import '../widgets/parental_gate.dart';
 
-  Future<void> _openUrl(String url) async {
-    final uri = Uri.parse(url);
-    if (await canLaunchUrl(uri)) {
-      await launchUrl(uri, mode: LaunchMode.externalApplication);
-    }
+/// "Lås upp allt" paywall — auto-renewable subscription with monthly and
+/// yearly options. Per Apple guidelines, the screen lists price, period,
+/// auto-renewal note, and links to terms.
+class PaywallScreen extends StatefulWidget {
+  const PaywallScreen({super.key});
+
+  @override
+  State<PaywallScreen> createState() => _PaywallScreenState();
+}
+
+class _PaywallScreenState extends State<PaywallScreen> {
+  String _selected = ModulesCatalog.subscriptionYearly;
+
+  Future<void> _onUnlock(ModuleService service) async {
+    final ok = await ParentalGate.show(context);
+    if (!ok || !mounted) return;
+    await service.purchaseSubscription(_selected);
   }
 
   @override
   Widget build(BuildContext context) {
-    final premium = context.watch<PremiumService>();
-    final lang = Localizations.localeOf(context).languageCode;
-
     return Scaffold(
+      backgroundColor: AppTheme.cream,
       appBar: AppBar(
-        title: const Text('Premium'),
-        leading: IconButton(
-          icon: const Icon(Icons.close),
-          onPressed: () => Navigator.pop(context),
-        ),
+        title: const Text('Lås upp allt'),
+        backgroundColor: AppTheme.cream,
+        elevation: 0,
       ),
-      body: SafeArea(
-        child: ListView(
-          padding: const EdgeInsets.all(24),
+      body: Consumer<ModuleService>(
+        builder: (context, service, _) {
+          if (service.hasActiveSubscription) {
+            return _ActiveView(service: service);
+          }
+          return SafeArea(
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.fromLTRB(24, 0, 24, 24),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  const SizedBox(height: 8),
+                  const Text('🎨', style: TextStyle(fontSize: 72)),
+                  const SizedBox(height: 12),
+                  const Text(
+                    'Lås upp alla teckningar',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 28,
+                      fontWeight: FontWeight.w900,
+                      color: AppTheme.ink,
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  const Text(
+                    'Enhörningar, superhjältar, djur, fordon och dinosaurier '
+                    '— allt nytt vi lägger till ingår.',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 16, color: Colors.black54),
+                  ),
+                  const SizedBox(height: 24),
+                  _PlanCard(
+                    productId: ModulesCatalog.subscriptionYearly,
+                    title: 'År',
+                    subtitle: 'Bästa värde',
+                    price: service.priceFor(
+                      ModulesCatalog.subscriptionYearly,
+                      fallback: '349 kr/år',
+                    ),
+                    selected: _selected == ModulesCatalog.subscriptionYearly,
+                    onTap: () => setState(
+                      () => _selected = ModulesCatalog.subscriptionYearly,
+                    ),
+                    accent: AppTheme.berry,
+                  ),
+                  const SizedBox(height: 12),
+                  _PlanCard(
+                    productId: ModulesCatalog.subscriptionMonthly,
+                    title: 'Månad',
+                    subtitle: 'Säg upp när du vill',
+                    price: service.priceFor(
+                      ModulesCatalog.subscriptionMonthly,
+                      fallback: '39 kr/mån',
+                    ),
+                    selected: _selected == ModulesCatalog.subscriptionMonthly,
+                    onTap: () => setState(
+                      () => _selected = ModulesCatalog.subscriptionMonthly,
+                    ),
+                    accent: AppTheme.sky,
+                  ),
+                  const SizedBox(height: 24),
+                  SizedBox(
+                    height: 60,
+                    child: ElevatedButton(
+                      onPressed:
+                          service.purchasing ? null : () => _onUnlock(service),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: AppTheme.berry,
+                        foregroundColor: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(28),
+                        ),
+                      ),
+                      child: service.purchasing
+                          ? const SizedBox(
+                              width: 24,
+                              height: 24,
+                              child: CircularProgressIndicator(
+                                strokeWidth: 2,
+                                color: Colors.white,
+                              ),
+                            )
+                          : const Text(
+                              'Starta prenumeration',
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w800,
+                              ),
+                            ),
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  TextButton(
+                    onPressed: service.purchasing
+                        ? null
+                        : () async {
+                            final ok = await ParentalGate.show(context);
+                            if (!ok) return;
+                            await service.restore();
+                          },
+                    child: const Text('Återställ köp'),
+                  ),
+                  if (service.lastError != null) ...[
+                    const SizedBox(height: 4),
+                    Text(
+                      'Något gick fel. Försök igen.',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(color: Colors.red.shade700),
+                    ),
+                  ],
+                  const SizedBox(height: 16),
+                  const Text(
+                    'Prenumerationen förnyas automatiskt om den inte sägs '
+                    'upp minst 24 timmar före perioden tar slut. Hantera '
+                    'eller säg upp i App Store-inställningar.',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 12, color: Colors.black54),
+                  ),
+                ],
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
+
+class _PlanCard extends StatelessWidget {
+  final String productId;
+  final String title;
+  final String subtitle;
+  final String price;
+  final bool selected;
+  final VoidCallback onTap;
+  final Color accent;
+
+  const _PlanCard({
+    required this.productId,
+    required this.title,
+    required this.subtitle,
+    required this.price,
+    required this.selected,
+    required this.onTap,
+    required this.accent,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 150),
+        padding: const EdgeInsets.all(20),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(24),
+          border: Border.all(
+            color: selected ? accent : Colors.black12,
+            width: selected ? 3 : 1.5,
+          ),
+          boxShadow: selected
+              ? [
+                  BoxShadow(
+                    color: accent.withValues(alpha: 0.25),
+                    blurRadius: 16,
+                    offset: const Offset(0, 6),
+                  ),
+                ]
+              : null,
+        ),
+        child: Row(
           children: [
-            const Icon(Icons.workspace_premium, size: 72, color: Colors.amber),
-            const SizedBox(height: 16),
+            Icon(
+              selected
+                  ? Icons.radio_button_checked
+                  : Icons.radio_button_unchecked,
+              color: selected ? accent : Colors.black38,
+              size: 28,
+            ),
+            const SizedBox(width: 16),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    title,
+                    style: const TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w800,
+                      color: AppTheme.ink,
+                    ),
+                  ),
+                  const SizedBox(height: 2),
+                  Text(
+                    subtitle,
+                    style: const TextStyle(
+                      fontSize: 13,
+                      color: Colors.black54,
+                    ),
+                  ),
+                ],
+              ),
+            ),
             Text(
-              'Sömnkoll Premium',
-              style: Theme.of(context).textTheme.headlineSmall,
-              textAlign: TextAlign.center,
-            ),
-            const SizedBox(height: 8),
-            const Text(
-              'Auto-spårning hela natten, avancerad ljudanalys, all historik '
-              'och obegränsade ljudklipp – helt utan annonser.',
-              textAlign: TextAlign.center,
-            ),
-            const SizedBox(height: 24),
-            _planTile(context, PremiumPlan.yearly, premium, lang,
-                highlight: true),
-            const SizedBox(height: 12),
-            _planTile(context, PremiumPlan.monthly, premium, lang),
-            const SizedBox(height: 12),
-            _planTile(context, PremiumPlan.lifetime, premium, lang),
-            const SizedBox(height: 20),
-            if (!premium.isPremium) const _WatchAdCard(),
-            const SizedBox(height: 20),
-            TextButton(
-              onPressed: premium.storeAvailable
-                  ? () => premium.restorePurchases()
-                  : null,
-              child: const Text('Återställ köp'),
-            ),
-            const SizedBox(height: 16),
-            Container(
-              padding: const EdgeInsets.all(12),
-              decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.surfaceContainerHighest,
-                borderRadius: BorderRadius.circular(10),
+              price,
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.w800,
+                color: accent,
               ),
-              child: Text(
-                'Månadsprenumerationen förnyas automatiskt varje månad och '
-                'årsprenumerationen varje år för samma pris. Livstid är ett '
-                'engångsköp. Prenumerationen förnyas om den inte avbryts minst '
-                '24 timmar före periodens slut. Betalning dras från ditt Apple '
-                'ID. Hantera eller avsluta i Inställningar → [ditt namn] → '
-                'Prenumerationer.',
-                style: Theme.of(context).textTheme.bodySmall,
-              ),
-            ),
-            const SizedBox(height: 8),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                TextButton(
-                  onPressed: () => _openUrl(AppConstants.termsOfUseUrl),
-                  child: const Text('Användarvillkor (EULA)'),
-                ),
-                const Text('·'),
-                TextButton(
-                  onPressed: () => _openUrl(AppConstants.privacyPolicyUrl),
-                  child: const Text('Integritetspolicy'),
-                ),
-              ],
             ),
           ],
         ),
       ),
     );
   }
-
-  Widget _planTile(BuildContext context, PremiumPlan plan,
-      PremiumService premium, String lang,
-      {bool highlight = false}) {
-    final label = switch (plan) {
-      PremiumPlan.monthly => 'Månadsvis',
-      PremiumPlan.yearly => 'Årsvis',
-      PremiumPlan.lifetime => 'Engångsköp',
-      PremiumPlan.free => '',
-    };
-    final price = premium.getPrice(plan, lang);
-    final trial = premium.introOfferText(plan, lang);
-    final subtitleParts = <String>[
-      ?trial,
-      if (plan == PremiumPlan.yearly)
-        '${premium.getMonthlyEquivalent(plan, lang)} · '
-            'Spara ${premium.getYearlySavingsPercent(lang)}%',
-    ];
-    final subtitle = subtitleParts.isEmpty ? null : subtitleParts.join('\n');
-    return Card(
-      elevation: highlight ? 4 : 1,
-      color: highlight ? Theme.of(context).colorScheme.primaryContainer : null,
-      child: ListTile(
-        isThreeLine: subtitleParts.length > 1,
-        title: Text(label),
-        subtitle: subtitle == null
-            ? null
-            : Text(
-                subtitle,
-                style: trial != null
-                    ? const TextStyle(fontWeight: FontWeight.w600)
-                    : null,
-              ),
-        trailing: Text(price,
-            style: Theme.of(context)
-                .textTheme
-                .titleMedium
-                ?.copyWith(fontWeight: FontWeight.bold)),
-        onTap: premium.purchaseInProgress
-            ? null
-            : () => premium.purchase(plan),
-      ),
-    );
-  }
 }
 
-class _WatchAdCard extends StatefulWidget {
-  const _WatchAdCard();
-
-  @override
-  State<_WatchAdCard> createState() => _WatchAdCardState();
-}
-
-class _WatchAdCardState extends State<_WatchAdCard> {
-  bool _loading = false;
-
-  Future<void> _watchAd() async {
-    if (_loading) return;
-    setState(() => _loading = true);
-    final messenger = ScaffoldMessenger.of(context);
-    final premium = context.read<PremiumService>();
-
-    final rewarded = await AdService().showRewardedAd();
-    if (!mounted) return;
-    setState(() => _loading = false);
-
-    if (rewarded) {
-      await premium.grantTemporaryPremium(duration: const Duration(hours: 24));
-      messenger.showSnackBar(
-        const SnackBar(
-          content: Text('24 timmar gratis premium aktiverat! 🎉'),
-          duration: Duration(seconds: 3),
-        ),
-      );
-    } else {
-      messenger.showSnackBar(
-        const SnackBar(
-          content: Text('Ingen annons tillgänglig just nu, försök igen snart.'),
-        ),
-      );
-    }
-  }
+class _ActiveView extends StatelessWidget {
+  final ModuleService service;
+  const _ActiveView({required this.service});
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      color: Theme.of(context).colorScheme.secondaryContainer,
-      child: ListTile(
-        leading: const Icon(Icons.play_circle_outline),
-        title: const Text('Titta på en annons'),
-        subtitle: const Text('Få 24 timmar premium gratis'),
-        trailing: _loading
-            ? const SizedBox(
-                width: 20,
-                height: 20,
-                child: CircularProgressIndicator(strokeWidth: 2),
-              )
-            : const Icon(Icons.chevron_right),
-        onTap: _loading ? null : _watchAd,
+    return SafeArea(
+      child: Padding(
+        padding: const EdgeInsets.all(24),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text('✨', style: TextStyle(fontSize: 72)),
+            const SizedBox(height: 12),
+            const Text(
+              'Premium aktiv',
+              style: TextStyle(
+                fontSize: 28,
+                fontWeight: FontWeight.w900,
+                color: AppTheme.ink,
+              ),
+            ),
+            const SizedBox(height: 8),
+            const Text(
+              'Alla teckningar är upplåsta. Tack för att du stöttar Rita!',
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 16, color: Colors.black54),
+            ),
+            const SizedBox(height: 24),
+            const Text(
+              'Hantera prenumerationen i App Store-inställningar.',
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 13, color: Colors.black54),
+            ),
+          ],
+        ),
       ),
     );
   }

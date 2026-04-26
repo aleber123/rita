@@ -3,94 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Support – VAB-koll</title>
+    <title>Support – Rita</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 720px; margin: 0 auto; padding: 40px 20px; color: #1a1a1a; line-height: 1.7; background: #fafafa; }
-        h1 { color: #2E8349; font-size: 28px; margin-bottom: 4px; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 720px; margin: 0 auto; padding: 40px 20px; color: #1a1a1a; line-height: 1.7; background: #FFF8EC; }
+        h1 { color: #FF6B9D; font-size: 28px; margin-bottom: 4px; }
         h2 { color: #333; margin-top: 28px; margin-bottom: 8px; font-size: 18px; }
         p, li { font-size: 15px; margin-bottom: 8px; }
         ul { padding-left: 20px; }
-        a { color: #2E8349; text-decoration: none; }
+        a { color: #FF6B9D; text-decoration: none; }
         a:hover { text-decoration: underline; }
-        .updated { color: #6b7280; font-size: 13px; margin-bottom: 24px; }
         .back { display: inline-block; margin-bottom: 20px; font-size: 14px; }
-        .app-badge { display: inline-block; background: #2E8349; color: white; padding: 2px 10px; border-radius: 12px; font-size: 12px; font-weight: 600; }
-        .contact-card { background: white; border: 1px solid #e5e7eb; border-radius: 16px; padding: 24px; margin-top: 20px; }
-        .contact-card h3 { color: #2E8349; margin-bottom: 8px; }
-        .faq-item { background: white; border: 1px solid #e5e7eb; border-radius: 12px; padding: 16px; margin-bottom: 12px; }
-        .faq-item strong { display: block; margin-bottom: 4px; color: #111; }
+        .app-badge { display: inline-block; background: #FF6B9D; color: white; padding: 2px 10px; border-radius: 12px; font-size: 12px; font-weight: 600; margin-bottom: 24px; }
+        .contact-card { background: white; border: 1px solid #f3e8ec; border-radius: 14px; padding: 20px; margin: 24px 0; }
+        .contact-card a { display: inline-block; background: #FF6B9D; color: white; padding: 10px 18px; border-radius: 12px; font-weight: 600; margin-top: 8px; }
+        .contact-card a:hover { text-decoration: none; opacity: 0.9; }
+        .faq { background: white; border: 1px solid #f3e8ec; border-radius: 14px; padding: 16px 20px; margin-bottom: 12px; }
+        .faq h3 { color: #1a1a1a; font-size: 15px; margin-bottom: 6px; }
+        .faq p { font-size: 14px; color: #555; margin: 0; }
     </style>
 </head>
 <body>
     <a href="index.html" class="back">← Tillbaka</a>
     <h1>Support</h1>
-    <span class="app-badge">VAB-koll</span>
-    <p class="updated">Vi hjälper dig gärna!</p>
+    <span class="app-badge">Rita</span>
+
+    <p>Behöver du hjälp eller har feedback? Vi svarar oftast inom 24 timmar.</p>
+
+    <div class="contact-card">
+        <strong>Mejla supporten</strong>
+        <p>För alla frågor, problem eller förslag:</p>
+        <a href="mailto:alexander.bergqvist@gmail.com?subject=Rita%20support">alexander.bergqvist@gmail.com</a>
+    </div>
 
     <h2>Vanliga frågor</h2>
 
-    <div class="faq-item">
-        <strong>Hur loggar jag en VAB-dag?</strong>
-        <p>På startskärmen, tryck på "+"-knappen. Välj barn, datum, andel av dag (12,5/25/50/75/100 %) och orsak. Uppskattad ersättning räknas ut automatiskt utifrån din SGI.</p>
+    <div class="faq">
+        <h3>Hur lås jag upp en modul?</h3>
+        <p>Tryck på modulen på startskärmen. Du får då upp en betalskärm där du kan låsa upp paketet. Vid köpet behöver du verifiera med Face ID, Touch ID eller ditt Apple-ID-lösenord.</p>
     </div>
 
-    <div class="faq-item">
-        <strong>Kan jag lägga till flera barn?</strong>
-        <p>Gratisversionen tillåter ett barn. Med Premium kan du lägga till obegränsat antal barn och se separata räknare för var och en.</p>
+    <div class="faq">
+        <h3>Hur återställer jag tidigare köp på en ny iPhone?</h3>
+        <p>Logga in med samma Apple-ID som vid det ursprungliga köpet. Öppna en låst modul i Rita och tryck på "Återställ köp". Alla tidigare köp aktiveras automatiskt.</p>
     </div>
 
-    <div class="faq-item">
-        <strong>Var sparas min data?</strong>
-        <p>All data sparas lokalt på din enhet i en säker databas. Vi har ingen åtkomst till dina uppgifter och inget skickas till externa servrar.</p>
+    <div class="faq">
+        <h3>Hur avslutar jag prenumerationen?</h3>
+        <p>Öppna iPhones inställningar → tryck på ditt namn högst upp → "Prenumerationer" → välj Rita → "Avbryt prenumeration". Den fortsätter fungera tills nuvarande period löper ut.</p>
     </div>
 
-    <div class="faq-item">
-        <strong>Hur fungerar ersättningskalkylen?</strong>
-        <p>Appen beräknar uppskattad tillfällig föräldrapenning som 77,6 % av din SGI (med Försäkringskassans tak). Ange din SGI i Inställningar. Detta är en uppskattning – slutlig ersättning bestäms av Försäkringskassan.</p>
+    <div class="faq">
+        <h3>Varför kan inte mitt barn trycka på knappen för köp?</h3>
+        <p>Det är meningen. Rita har en föräldrarspärr som ber dig lösa en enkel matematikuppgift innan ett köp kan genomföras. Detta skyddar mot oavsiktliga köp.</p>
     </div>
 
-    <div class="faq-item">
-        <strong>När behövs läkarintyg?</strong>
-        <p>Från dag 8 i en VAB-period kräver Försäkringskassan läkarintyg. Appen påminner dig på dag 7 så att du hinner boka tid.</p>
+    <div class="faq">
+        <h3>Sparar appen barnens foton?</h3>
+        <p>Nej. När du tar ett foto för "Förvandla ett kort" bearbetas bilden direkt på enheten. Inget skickas till någon server och fotot sparas inte permanent av Rita. Den slutgiltiga målarbilden sparas endast om du själv väljer att exportera eller dela den.</p>
     </div>
 
-    <div class="faq-item">
-        <strong>Vad är 90-dagarsregeln?</strong>
-        <p>Du måste anmäla VAB till Försäkringskassan inom 90 dagar från första VAB-dagen, annars kan ersättningen utebli. Appen skickar påminnelser 60, 75 och 85 dagar efter VAB-dagen om du inte markerat posten som inskickad.</p>
+    <div class="faq">
+        <h3>Mina sparade teckningar försvann efter att jag avinstallerat appen</h3>
+        <p>Sparade teckningar lagras endast lokalt på enheten. När appen avinstalleras tas de tyvärr bort. Tips: använd dela-knappen för att spara dina favoriter i fotobiblioteket innan avinstallation.</p>
     </div>
 
-    <div class="faq-item">
-        <strong>Hur exporterar jag mina VAB-poster?</strong>
-        <p>Gå till Inställningar → Exportera till CSV (Premium). En CSV-fil skapas som du kan dela via e-post eller molntjänst – praktiskt för bokföring eller för att dela med arbetsgivaren.</p>
+    <div class="faq">
+        <h3>Vilka iPhones och iPads stöds?</h3>
+        <p>Rita kräver iOS 14.0 eller senare. Appen är optimerad för iPhone och iPad.</p>
     </div>
 
-    <div class="faq-item">
-        <strong>Hur avbryter jag min Premium-prenumeration?</strong>
-        <p><strong>iPhone:</strong> Inställningar → ditt namn → Prenumerationer → VAB-koll → Avbryt.<br>
-        <strong>Android:</strong> Öppna Google Play → Meny → Prenumerationer → VAB-koll → Avbryt.</p>
+    <div class="faq">
+        <h3>Jag har en idé på en ny modul – hur föreslår jag den?</h3>
+        <p>Vi älskar feedback! Mejla din idé till alexander.bergqvist@gmail.com så ser vi om den kan komma med i en framtida uppdatering.</p>
     </div>
 
-    <div class="faq-item">
-        <strong>Jag får inga påminnelser!</strong>
-        <p>Kontrollera att notiser är aktiverade för VAB-koll i enhetens inställningar (Inställningar → Notiser → VAB-koll).</p>
-    </div>
-
-    <div class="faq-item">
-        <strong>Hur stänger jag av annonser?</strong>
-        <p>Uppgradera till Premium – då försvinner alla annonser och du får tillgång till alla funktioner.</p>
-    </div>
-
-    <div class="faq-item">
-        <strong>Är VAB-koll kopplad till Försäkringskassan?</strong>
-        <p>Nej. VAB-koll är en fristående app och är inte associerad med eller godkänd av Försäkringskassan. För officiell information och anmälan besök <a href="https://www.forsakringskassan.se/privatperson/foralder/nar-barnet-ar-sjukt-vab">forsakringskassan.se</a>.</p>
-    </div>
-
-    <div class="contact-card">
-        <h3>Kontakta oss</h3>
-        <p>Hittar du inte svaret på din fråga? Skicka ett mejl till oss så svarar vi så snart vi kan.</p>
-        <p>📧 <a href="mailto:support@alexanderbergqvist.com">support@alexanderbergqvist.com</a></p>
-        <p>Vi svarar vanligtvis inom 24 timmar.</p>
-    </div>
+    <hr style="border: none; border-top: 1px solid #f3e8ec; margin: 32px 0 16px;">
+    <p style="font-size: 13px; color: #6b7280;">© 2026 Alexander Bergqvist · <a href="privacy.html">Integritetspolicy</a> · <a href="terms.html">Användarvillkor</a></p>
 </body>
 </html>

@@ -3,9 +3,7 @@
 #
 
 list(APPEND FLUTTER_PLUGIN_LIST
-  flutter_sound
-  permission_handler_windows
-  printing
+  file_selector_windows
   share_plus
   url_launcher_windows
 )

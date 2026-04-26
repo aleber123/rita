@@ -1,7 +1,7 @@
-name: somnkoll
-description: "Sömnkoll – spåra sömn, analysera ljud och vakna utvilad."
+name: rita
+description: "Rita – färglägg roliga teckningar för barn 3–8 år."
 publish_to: 'none'
-version: 1.0.0+10
+version: 1.0.0+16
 
 environment:
   sdk: ^3.10.8
@@ -16,66 +16,36 @@ dependencies:
   # State management
   provider: ^6.1.2
 
-  # Local database (sleep sessions, audio clips, phases)
+  # Local database (saved drawings, unlocked modules)
   sqflite: ^2.4.2
   path: ^1.9.1
 
-  # Shared preferences (settings, alarm config)
+  # Shared preferences (settings, parental gate state)
   shared_preferences: ^2.3.4
-
-  # Date utilities
-  intl: ^0.20.2
 
   # UUID generation
   uuid: ^4.5.1
 
-  # Path provider (file storage for audio clips)
+  # Path provider (saved drawings)
   path_provider: ^2.1.5
 
-  # URL launcher (privacy policy, support links)
-  url_launcher: ^6.3.1
-
-  # Ads (AdMob)
-  google_mobile_ads: ^5.3.0
-
-  # Share files (PDF/CSV export of sleep reports)
-  share_plus: ^10.1.4
-
-  # PDF generation (monthly sleep reports)
-  pdf: ^3.11.0
-  printing: ^5.13.4
-
-  # In-App Purchases (premium auto-tracking)
+  # In-App Purchases (module unlock)
   in_app_purchase: ^3.2.0
   in_app_purchase_storekit: ^0.3.0
 
-  # Facebook Conversions API / App Events
+  # Facebook App Events / Conversions API (paid acquisition attribution)
   facebook_app_events: ^0.27.0
 
-  # iOS App Tracking Transparency (ATT)
+  # iOS App Tracking Transparency (ATT) — required for Meta attribution
   app_tracking_transparency: ^2.0.6
 
-  # Sleep tracking sensors
-  sensors_plus: ^6.1.0
-  flutter_sound: ^9.16.3
-  permission_handler: ^11.3.1
-  audio_session: ^0.1.21
+  # Save & share finished drawings
+  share_plus: ^10.1.2
 
-  # Charts (sleep phases, quality, regularity)
-  fl_chart: ^0.69.0
-
-  # Local notifications (alarms, smart wake)
-  flutter_local_notifications: ^18.0.1
-  timezone: ^0.10.0
-
-  # Wakelock to keep screen awake during tracking
-  wakelock_plus: ^1.2.10
-
-  # Audio playback (sleep aids, alarm sounds, recorded clips)
-  just_audio: ^0.9.42
-
-  # Apple Health / Google Fit integration
-  health: ^13.3.1
+  # Camera-to-coloring (kid takes a photo, edges become a coloring page).
+  # Pure on-device pixel processing — no AI/ML, no network.
+  image_picker: ^1.1.2
+  image: ^4.3.0
 
 dev_dependencies:
   flutter_test:
@@ -89,12 +59,16 @@ flutter_launcher_icons:
   image_path: "assets/app_icon/app_icon_1024.png"
   remove_alpha_ios: true
   min_sdk_android: 21
-  adaptive_icon_background: "#0A1B3D"
+  adaptive_icon_background: "#FFE4B5"
   adaptive_icon_foreground: "assets/app_icon/app_icon_1024.png"
 
 flutter:
   uses-material-design: true
   assets:
-    - assets/images/
+    - assets/drawings/free/
+    - assets/drawings/unicorns/
+    - assets/drawings/superheroes/
+    - assets/drawings/animals/
+    - assets/drawings/vehicles/
+    - assets/drawings/dinosaurs/
     - assets/app_icon/
-    - assets/sounds/
