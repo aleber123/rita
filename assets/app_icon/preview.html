@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<title>Tidrapport – App icon concepts</title>
+<style>
+  body { font-family: -apple-system, sans-serif; background: #0f172a; color: #e2e8f0; margin: 0; padding: 40px; }
+  h1 { font-weight: 700; margin: 0 0 8px; }
+  p.sub { color: #94a3b8; margin: 0 0 32px; max-width: 760px; line-height: 1.5; }
+  h2 { font-weight: 600; margin: 40px 0 12px; font-size: 20px; border-bottom: 1px solid #334155; padding-bottom: 8px; }
+  .notes { color: #94a3b8; font-size: 13px; line-height: 1.5; margin: 0 0 20px; max-width: 700px; }
+  .row { display: flex; gap: 40px; align-items: flex-end; flex-wrap: wrap; margin-bottom: 24px; }
+  .cell { text-align: center; }
+  .cell img { display: block; box-shadow: 0 10px 30px rgba(0,0,0,0.4); border-radius: 22.37%; }
+  .cell span { display: block; margin-top: 10px; font-size: 12px; color: #64748b; }
+  .wallpaper { background: linear-gradient(135deg, #1e293b, #334155); padding: 24px; border-radius: 24px; margin-bottom: 24px; }
+  .wallpaper h3 { font-size: 14px; color: #94a3b8; margin: 0 0 16px; font-weight: 500; }
+  .grid { display: grid; grid-template-columns: repeat(4, 60px); gap: 20px; }
+  .dummy { width: 60px; height: 60px; border-radius: 22.37%; }
+  .dummy.green { background: #34D399; }
+  .dummy.red { background: #EF4444; }
+  .dummy.orange { background: #F59E0B; }
+  .dummy.gray { background: #475569; }
+  .dummy.blue { background: #3B82F6; }
+  .real { width: 60px; height: 60px; border-radius: 22.37%; }
+  .badge { display: inline-block; padding: 2px 10px; background: #1e293b; border-radius: 12px; font-size: 12px; margin-left: 8px; vertical-align: middle; }
+  .badge.new { color: #fbbf24; background: #422006; }
+  .badge.old { color: #64748b; }
+</style>
+</head>
+<body>
+  <h1>Tidrapport — App icon</h1>
+  <p class="sub">
+    Koncept 3 är helt omdesignad efter research på moderna 2025-2026 ikonmönster (Linear, Arc, ChatGPT, Raycast).
+    Inga literal klockor, inga outlines, mesh-gradient istället för linjär, mycket luft runt fokalpunkten.
+  </p>
+
+  <h2>Koncept 3 — Modern timer + hands <span class="badge new">v2</span></h2>
+  <p class="notes">
+    3/4-båge (modern timer-metafor) + minimala klockhänder i 10:10-pose, tunna med rundade ändar.
+    Mesh-gradient i djup magenta-violett. Glasigt specular highlight top-left.
+    Inga tick-markeringar, inga outlines — klockan syns utan skeuomorphism.
+  </p>
+  <div class="row">
+    <div class="cell"><img src="app_icon_concept3.svg" width="60"><span>60 px</span></div>
+    <div class="cell"><img src="app_icon_concept3.svg" width="120"><span>120 px</span></div>
+    <div class="cell"><img src="app_icon_concept3.svg" width="180"><span>180 px</span></div>
+    <div class="cell"><img src="app_icon_concept3.svg" width="512"><span>512 px</span></div>
+  </div>
+  <div class="wallpaper">
+    <h3>Bland konkurrenter:</h3>
+    <div class="grid">
+      <div class="dummy green"></div>
+      <div class="dummy red"></div>
+      <img class="real" src="app_icon_concept3.svg">
+      <div class="dummy orange"></div>
+      <div class="dummy green"></div>
+      <div class="dummy blue"></div>
+      <div class="dummy red"></div>
+      <div class="dummy gray"></div>
+    </div>
+  </div>
+
+  <h2>Koncept 2 — Clock + gold ring <span class="badge old">2015-aesthetic</span></h2>
+  <div class="row">
+    <div class="cell"><img src="app_icon_concept2.svg" width="60"><span>60 px</span></div>
+    <div class="cell"><img src="app_icon_concept2.svg" width="120"><span>120 px</span></div>
+    <div class="cell"><img src="app_icon_concept2.svg" width="180"><span>180 px</span></div>
+    <div class="cell"><img src="app_icon_concept2.svg" width="512"><span>512 px</span></div>
+  </div>
+
+  <h2>Koncept 1 — Document + clock <span class="badge old">busy at 60px</span></h2>
+  <div class="row">
+    <div class="cell"><img src="app_icon_concept1.svg" width="60"><span>60 px</span></div>
+    <div class="cell"><img src="app_icon_concept1.svg" width="120"><span>120 px</span></div>
+    <div class="cell"><img src="app_icon_concept1.svg" width="180"><span>180 px</span></div>
+    <div class="cell"><img src="app_icon_concept1.svg" width="512"><span>512 px</span></div>
+  </div>
+</body>
+</html>

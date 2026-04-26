@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#3B82F6"/>
+      <stop offset="100%" stop-color="#1E3A8A"/>
+    </linearGradient>
+    <linearGradient id="paper" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#F1F5F9"/>
+    </linearGradient>
+    <linearGradient id="face" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#E2E8F0"/>
+    </linearGradient>
+    <filter id="drop" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="22"/>
+      <feOffset dx="0" dy="14"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.32"/></feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background squircle -->
+  <rect width="1024" height="1024" rx="228" fill="url(#bg)"/>
+
+  <!-- Document, tilted slightly counter-clockwise -->
+  <g transform="rotate(-8 512 512)" filter="url(#drop)">
+    <rect x="250" y="210" width="450" height="570" rx="34" fill="url(#paper)"/>
+    <!-- Header stripe -->
+    <rect x="298" y="268" width="170" height="20" rx="10" fill="#2563EB"/>
+    <rect x="298" y="304" width="108" height="12" rx="6" fill="#94A3B8"/>
+    <!-- A few text rows (soft, not busy) -->
+    <g fill="#CBD5E1">
+      <rect x="298" y="360" width="354" height="14" rx="7"/>
+      <rect x="298" y="396" width="298" height="14" rx="7"/>
+      <rect x="298" y="432" width="340" height="14" rx="7"/>
+      <rect x="298" y="468" width="270" height="14" rx="7"/>
+    </g>
+    <!-- Total row near bottom -->
+    <rect x="298" y="682" width="390" height="2" fill="#CBD5E1"/>
+    <rect x="298" y="706" width="112" height="16" rx="8" fill="#64748B"/>
+    <rect x="524" y="702" width="164" height="24" rx="10" fill="#10B981"/>
+  </g>
+
+  <!-- Clock, large, sits in front of document, lower-right -->
+  <g transform="translate(700 700)" filter="url(#drop)">
+    <circle r="232" fill="url(#face)"/>
+    <circle r="232" fill="none" stroke="#1E40AF" stroke-width="24"/>
+    <!-- Ticks at 12, 3, 6, 9 -->
+    <rect x="-10" y="-196" width="20" height="40" rx="5" fill="#1E40AF"/>
+    <rect x="156" y="-10" width="40" height="20" rx="5" fill="#1E40AF"/>
+    <rect x="-10" y="156" width="20" height="40" rx="5" fill="#1E40AF"/>
+    <rect x="-196" y="-10" width="40" height="20" rx="5" fill="#1E40AF"/>
+    <!-- Hands showing 10:10 -->
+    <rect x="-9" y="-140" width="18" height="150" rx="5" fill="#1E40AF" transform="rotate(60)"/>
+    <rect x="-11" y="-92" width="22" height="100" rx="5" fill="#1E40AF" transform="rotate(-60)"/>
+    <circle r="18" fill="#1E40AF"/>
+  </g>
+</svg>

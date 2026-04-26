@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VAB-koll – Håll koll på VAB-dagar och Försäkringskassan</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: #1a1a1a; line-height: 1.6; background: linear-gradient(135deg, #e8f5ec 0%, #fff 50%, #dff0e4 100%); min-height: 100vh; }
+        .container { max-width: 640px; margin: 0 auto; padding: 60px 20px; text-align: center; }
+        .logo { font-size: 64px; margin-bottom: 16px; }
+        h1 { font-size: 34px; color: #2E8349; margin-bottom: 8px; letter-spacing: -0.5px; }
+        .tagline { font-size: 17px; color: #555; margin-bottom: 32px; }
+        .badge-row { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; margin-bottom: 32px; }
+        .badge { display: inline-block; background: #d5ead9; color: #1B532D; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; }
+        .features { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 40px; text-align: left; }
+        .feature { background: white; border: 1px solid #e5e7eb; border-radius: 14px; padding: 16px; }
+        .feature-emoji { font-size: 24px; margin-bottom: 6px; }
+        .feature-title { font-size: 14px; font-weight: 700; color: #111; }
+        .feature-desc { font-size: 12px; color: #6b7280; }
+        .links { display: flex; flex-direction: column; gap: 12px; margin-top: 32px; }
+        .links a { display: block; padding: 14px 24px; border-radius: 14px; text-decoration: none; font-weight: 600; font-size: 15px; transition: transform 0.15s; }
+        .links a:hover { transform: translateY(-1px); }
+        .link-primary { background: #2E8349; color: white; }
+        .link-secondary { background: white; color: #2E8349; border: 1.5px solid #2E8349; }
+        .link-ghost { background: transparent; color: #6b7280; font-weight: 500; font-size: 13px; }
+        .footer { margin-top: 48px; font-size: 12px; color: #9ca3af; }
+        .footer a { color: #6b7280; text-decoration: none; }
+        .footer a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">💚</div>
+        <h1>VAB-koll</h1>
+        <p class="tagline">Håll koll på VAB-dagar, deadlines och ersättning från Försäkringskassan</p>
+
+        <div class="badge-row">
+            <span class="badge">🇸🇪 Svenska</span>
+            <span class="badge">🇬🇧 English</span>
+        </div>
+
+        <div class="features">
+            <div class="feature">
+                <div class="feature-emoji">📋</div>
+                <div class="feature-title">Logga VAB-dagar</div>
+                <div class="feature-desc">Hel, halv eller del av dag</div>
+            </div>
+            <div class="feature">
+                <div class="feature-emoji">👶</div>
+                <div class="feature-title">Flera barn</div>
+                <div class="feature-desc">120 dagar per barn/år</div>
+            </div>
+            <div class="feature">
+                <div class="feature-emoji">⏰</div>
+                <div class="feature-title">Påminnelser</div>
+                <div class="feature-desc">90-dagars FK-deadline</div>
+            </div>
+            <div class="feature">
+                <div class="feature-emoji">💰</div>
+                <div class="feature-title">Ersättningskalkyl</div>
+                <div class="feature-desc">77,6 % av SGI</div>
+            </div>
+            <div class="feature">
+                <div class="feature-emoji">📅</div>
+                <div class="feature-title">Kalendervy</div>
+                <div class="feature-desc">Månadsöversikt</div>
+            </div>
+            <div class="feature">
+                <div class="feature-emoji">📤</div>
+                <div class="feature-title">CSV-export</div>
+                <div class="feature-desc">För bokföring</div>
+            </div>
+        </div>
+
+        <div class="links">
+            <a href="support.html" class="link-primary">📧 Support & Hjälp</a>
+            <a href="privacy.html" class="link-secondary">🔒 Integritetspolicy</a>
+            <a href="terms.html" class="link-ghost">Användarvillkor</a>
+        </div>
+
+        <div class="footer">
+            <p>© 2026 Alexander Bergqvist</p>
+            <p style="margin-top: 4px;">
+                <a href="privacy.html">Integritetspolicy</a> ·
+                <a href="terms.html">Villkor</a> ·
+                <a href="support.html">Support</a>
+            </p>
+            <p style="margin-top: 8px; font-size: 11px;">VAB-koll är inte associerad med Försäkringskassan.</p>
+        </div>
+    </div>
+</body>
+</html>

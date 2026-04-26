@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Integritetspolicy – VAB-koll</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 720px; margin: 0 auto; padding: 40px 20px; color: #1a1a1a; line-height: 1.7; background: #fafafa; }
+        h1 { color: #2E8349; font-size: 28px; margin-bottom: 4px; }
+        h2 { color: #333; margin-top: 28px; margin-bottom: 8px; font-size: 18px; }
+        p, li { font-size: 15px; margin-bottom: 8px; }
+        ul { padding-left: 20px; }
+        a { color: #2E8349; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .updated { color: #6b7280; font-size: 13px; margin-bottom: 24px; }
+        .back { display: inline-block; margin-bottom: 20px; font-size: 14px; }
+        .app-badge { display: inline-block; background: #2E8349; color: white; padding: 2px 10px; border-radius: 12px; font-size: 12px; font-weight: 600; }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back">← Tillbaka</a>
+    <h1>Integritetspolicy</h1>
+    <span class="app-badge">VAB-koll</span>
+    <p class="updated">Senast uppdaterad: 22 april 2026</p>
+
+    <h2>1. Vilka vi är</h2>
+    <p>VAB-koll ("appen") utvecklas av Alexander Bergqvist. Vi värnar om din integritet och hanterar din data med omsorg. Appen är inte associerad med eller godkänd av Försäkringskassan.</p>
+
+    <h2>2. Data som sparas</h2>
+    <p>All data du anger i appen (barnens förnamn, VAB-dagar, andelar, orsak, anteckningar, läkarintyg, FK-status, SGI och uppskattad ersättning) sparas <strong>lokalt på din enhet</strong> i en SQLite-databas. Vi har ingen åtkomst till denna data och den skickas aldrig till våra servrar.</p>
+
+    <h2>3. Tredjepartstjänster</h2>
+    <p>Appen använder följande tredjepartstjänster:</p>
+    <ul>
+        <li><strong>Google AdMob</strong> – Visar annonser för gratisanvändare. AdMob kan samla in enhets-ID och annonseringsdata enligt <a href="https://policies.google.com/privacy">Googles integritetspolicy</a>. På iOS frågar appen om ditt tillstånd via App Tracking Transparency (ATT) innan IDFA används.</li>
+        <li><strong>Google UMP (User Messaging Platform)</strong> – Visar GDPR-samtyckesformulär för användare inom EU/EES.</li>
+        <li><strong>Meta (Facebook App Events)</strong> – Appen använder Metas SDK för app-events för att mäta annonseffektivitet. Meta kan samla in enhets-ID, händelsedata (appöppningar, köp, prenumerationsstarter) och annonseringsidentifierare. Spårning aktiveras endast efter ditt godkännande via ATT-dialogen. Se <a href="https://www.facebook.com/privacy/policy/">Metas integritetspolicy</a>.</li>
+        <li><strong>Apple App Store / Google Play</strong> – Hanterar betalningar för Premium-prenumerationer. Vi har inte tillgång till din betalningsinformation.</li>
+    </ul>
+
+    <h2>4. Premium-prenumerationer</h2>
+    <p>Premium-köp hanteras av Apple App Store eller Google Play. Prenumerationer förnyas automatiskt om de inte avbryts minst 24 timmar före periodens slut. Du kan hantera prenumerationen i App Store- eller Google Play-inställningar.</p>
+
+    <h2>5. Push-notiser</h2>
+    <p>Appen använder lokala notiser för påminnelser (t.ex. deadline för att anmäla VAB till Försäkringskassan, läkarintyg från dag 8). Dessa schemaläggs lokalt på din enhet och skickas inte via någon extern server.</p>
+
+    <h2>6. Spårning och annonsering</h2>
+    <p>Appen kan, med ditt tillstånd, använda din enhets annonseringsidentifierare (IDFA på iOS, AAID på Android) för att mäta hur effektiva våra annonser är och för personaliserade annonser. Följande data kan delas med Google och Meta för annonsmätning:</p>
+    <ul>
+        <li>Händelsedata: appöppningar, köp, prenumerationsstarter, sparade VAB-poster</li>
+        <li>Enhetsidentifierare (IDFA/AAID) – endast om du godkänt spårning</li>
+        <li>Teknisk information: enhetsmodell, operativsystemsversion, språk</li>
+    </ul>
+    <p>Du kan återkalla ditt tillstånd när som helst:</p>
+    <ul>
+        <li><strong>iOS:</strong> Inställningar → Integritet & säkerhet → Spårning → VAB-koll</li>
+        <li><strong>Android:</strong> Inställningar → Integritet → Annonser → Återställ annons-ID</li>
+    </ul>
+
+    <h2>7. Export av data</h2>
+    <p>Med Premium kan du exportera dina VAB-poster som CSV-filer. Exporten sker lokalt på enheten och delas endast där du väljer (e-post, molntjänst etc.). Vi har ingen åtkomst till exporterade filer.</p>
+
+    <h2>8. Barn</h2>
+    <p>Appen är avsedd för vårdnadshavare. De uppgifter som sparas om barn (endast förnamn eller smeknamn och födelseår) anger vårdnadshavaren frivilligt och de lagras endast lokalt på enheten. Vi samlar inte in eller skickar dessa uppgifter någonstans.</p>
+
+    <h2>9. Dina rättigheter (GDPR)</h2>
+    <p>Eftersom all din appdata endast lagras lokalt kan du när som helst radera all din information genom att avinstallera appen eller ta bort enskilda poster i appen. Har du frågor om hur tredjepartstjänster (Google, Meta) hanterar data om dig, kontakta respektive tjänst direkt.</p>
+
+    <h2>10. Ändringar</h2>
+    <p>Vi kan uppdatera denna policy. Ändringar publiceras på denna sida med nytt uppdateringsdatum.</p>
+
+    <h2>11. Kontakt</h2>
+    <p>Frågor om integritet? Kontakta oss på <a href="mailto:support@alexanderbergqvist.com">support@alexanderbergqvist.com</a>.</p>
+</body>
+</html>

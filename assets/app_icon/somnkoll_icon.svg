@@ -1,0 +1,83 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="35%" r="80%">
+      <stop offset="0%" stop-color="#2A3470"/>
+      <stop offset="55%" stop-color="#101638"/>
+      <stop offset="100%" stop-color="#060919"/>
+    </radialGradient>
+
+    <linearGradient id="wave" x1="0%" y1="50%" x2="100%" y2="50%">
+      <stop offset="0%" stop-color="#A5B4FC"/>
+      <stop offset="40%" stop-color="#818CF8"/>
+      <stop offset="70%" stop-color="#6366F1"/>
+      <stop offset="100%" stop-color="#A5B4FC"/>
+    </linearGradient>
+
+    <radialGradient id="moon" cx="40%" cy="38%" r="60%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="60%" stop-color="#E0E7FF"/>
+      <stop offset="100%" stop-color="#9DA8F6"/>
+    </radialGradient>
+
+    <radialGradient id="moonGlowGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#A5B4FC" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#A5B4FC" stop-opacity="0"/>
+    </radialGradient>
+
+    <filter id="waveGlow" x="-30%" y="-50%" width="160%" height="200%">
+      <feGaussianBlur stdDeviation="26" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1024" height="1024" fill="url(#bg)"/>
+
+  <!-- Stars -->
+  <g fill="#FFFFFF">
+    <circle cx="180" cy="200" r="3.2" opacity="0.85"/>
+    <circle cx="290" cy="320" r="2.0" opacity="0.55"/>
+    <circle cx="160" cy="380" r="2.4" opacity="0.65"/>
+    <circle cx="430" cy="170" r="2.2" opacity="0.6"/>
+    <circle cx="930" cy="430" r="2.0" opacity="0.5"/>
+  </g>
+
+  <!-- Moon glow halo -->
+  <circle cx="780" cy="310" r="220" fill="url(#moonGlowGrad)"/>
+
+  <!-- Crescent moon -->
+  <g>
+    <mask id="crescent">
+      <rect width="1024" height="1024" fill="black"/>
+      <circle cx="780" cy="310" r="135" fill="white"/>
+      <circle cx="725" cy="280" r="130" fill="black"/>
+    </mask>
+    <rect width="1024" height="1024" fill="url(#moon)" mask="url(#crescent)"/>
+  </g>
+
+  <!-- Sleep cycle wave: awake → deep plateau → REM peak → deep → rising wake -->
+  <g filter="url(#waveGlow)">
+    <path d="M 70 600
+             C 170 600, 210 720, 320 720
+             C 410 720, 460 580, 560 580
+             C 640 580, 680 700, 770 700
+             C 850 700, 900 610, 954 540"
+          stroke="url(#wave)"
+          stroke-width="46"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          fill="none"/>
+  </g>
+
+  <!-- Tactile highlight on top of wave -->
+  <path d="M 80 596
+           C 165 596, 205 712, 318 712"
+        stroke="#FFFFFF"
+        stroke-width="5"
+        stroke-linecap="round"
+        opacity="0.32"
+        fill="none"/>
+</svg>
